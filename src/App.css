@@ -1,0 +1,82 @@
+#root {
+    max-width: auto;
+    margin: 0 auto;
+    padding: 1rem;
+    text-align: center;
+  }
+
+.navBar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: whitesmoke;
+    width: auto;
+    height: 90px;
+}
+
+.brandLogo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.brandLogo img {
+    width: 80px;
+    height: 80px;
+    padding: 10px;
+}
+
+.itemList {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 300px;
+    list-style: none;
+}
+
+.carritoIcono img {
+    width: 55px;
+    height: 50px;
+    padding: 10px;
+}
+
+.containerCartas {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+.items {
+    margin: 10px;
+}
+
+.carruselContainer {
+    display: flex;
+    justify-content: center;
+}
+
+
+.itemDetalle {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+}
+
+a:Link {
+    text-decoration: none;
+}
+
+.linkTo, .linkTo:hover{
+    color: black;
+}
+
+.linkTo1 , .linkTo1:hover{
+    color: aliceblue;
+}
+
+.imgDetalle {
+    width: 500px;
+    height: 400px;
+}
