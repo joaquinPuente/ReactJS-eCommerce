@@ -23,10 +23,10 @@ const NavItemListContainer = () => {
               <Dropdown.Menu>
 
                 <Dropdown.Item>
-                  Urbanas
+                <Link to="/categoria/urbana" className='linkTo'>Urbanas</Link>
                 </Dropdown.Item>
                 <Dropdown.Item>
-                Deportivas
+                <Link to="/categoria/deportiva" className='linkTo'>Deportiva</Link>
                 </Dropdown.Item>
 
               </Dropdown.Menu>

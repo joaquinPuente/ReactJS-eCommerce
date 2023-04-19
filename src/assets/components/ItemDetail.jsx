@@ -11,7 +11,7 @@ const ItemDetail = ({id,title,price,image,category,cantidad}) => {
         <div class="card-body">
             <h5 class="card-title"> {title} </h5>
             <p class="card-text">
-            Esta es una zapatilla de clase {category}
+            Esta es una zapatilla de clase 
             </p>
             <p class="card-text">
             <small class="text-muted">Precio: {price} </small>

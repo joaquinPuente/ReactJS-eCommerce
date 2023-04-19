@@ -7,6 +7,7 @@ import Carrusel from './assets/components/Carrusel';
 import Footer from './assets/components/Footer';
 import ItemListContainer from './assets/components/ItemListContainer';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { ItemDetailContainer } from './assets/components/ItemDetailContainer';
 
 
 function App() {
@@ -20,8 +21,9 @@ function App() {
       <Routes>
         <Route path='/' element={<Carrusel/>} />
         <Route path='/productos' element={<ItemListContainer/>}/>
+        <Route path='/categoria/:categoryId' element={<ItemListContainer/>}/>
+        <Route path='/productos/:itemId' element={<ItemDetailContainer/>}/>
       </Routes>
-      
       <Footer/>
       </BrowserRouter>
       
