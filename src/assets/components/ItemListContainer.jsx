@@ -10,24 +10,25 @@ const ItemListContainer = () => {
     const [products,setProducts] = useState([])
     const { categoryId } = useParams()
     
-    useEffect ( ()=> {
+    useEffect(() => {
+      const asyncFunc = categoryId ? getProductsByCategory(categoryId) : getProducts();
       
-      const asynFunc = categoryId ? getProductsByCategory : getProducts
-  
-      
-      asynFunc()
-        .then(response =>{
-          setProducts(response)
+      asyncFunc
+        .then(response => {
+          setProducts(response);
+          console.log("response de set product es:", response);
         })
         .catch(error => {
-          console.error(error)
-        })
-    }, [categoryId] )
-    console.log(products)
+          console.error(error);
+        });
+    }, [categoryId]);
+    
+    
   return (
     <div>
-        <h1>Productos:</h1>
+        <h1>{categoryId}</h1>
         <ItemList products={products}/>
+        
     </div>
   )
 }

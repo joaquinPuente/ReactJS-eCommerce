@@ -80,3 +80,7 @@ a:Link {
     width: 500px;
     height: 400px;
 }
+
+.item-count {
+    margin: 10px;
+}

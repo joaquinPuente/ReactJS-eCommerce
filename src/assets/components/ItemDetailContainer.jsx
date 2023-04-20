@@ -4,14 +4,15 @@ import { getProductById } from '../../asyncMock';
 import ItemDetail from './ItemDetail';
 
 export const ItemDetailContainer = () => {
-  const [product, setProduct] = useState(null)
+  const [product, setProduct] = useState([])
   const { itemId } = useParams();
 
   useEffect(() => {
-    getProductById(3)
+
+    getProductById(itemId)
     .then(response => {setProduct(response)})
     .catch(error => {console.log(error)})
-  }, []);
+  }, [itemId]);
       
   return (
   <div className='itemDetalle'>

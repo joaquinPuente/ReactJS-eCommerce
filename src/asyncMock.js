@@ -5,9 +5,7 @@ const products = [
         price: 401,
         image: '../public/images/img01.jpg',
         category: "urbana",
-        img1: "https://stockx-360.imgix.net/Nike-LD-Waffle-Sacai-Black-Nylon/Images/Nike-LD-Waffle-Sacai-Black-Nylon/Lv2/img",
-        img2: ".jpg?auto=format,compress&q=90&updated_at=1606321430&w=1000",
-        cantidad: 1,
+        cantidad: 9,
       },
       {
         id: 2,
@@ -15,9 +13,7 @@ const products = [
         price: 304,
         image: '../public/images/img02.jpg',
         category: "urbana",
-        img1: "https://stockx-360.imgix.net/Nike-Dunk-Low-Off-White-Pine-Green/Images/Nike-Dunk-Low-Off-White-Pine-Green/Lv2/img",
-        img2: ".jpg?auto=format,compress&q=90&updated_at=1606319825&w=1000",
-        cantidad: 1
+        cantidad: 7
       },
       {
         id: 3,
@@ -25,9 +21,7 @@ const products = [
         price: 475,
         image: '../public/images/img03.jpg',
         category: "deportiva",
-        img1: "https://stockx-360.imgix.net/Nike-Air-Force-1-Low-Supreme-Box-Logo-Black/Images/Nike-Air-Force-1-Low-Supreme-Box-Logo-Black/Lv2/img",
-        img2: ".jpg?auto=format,compress&q=90&updated_at=1606325289&w=1000",
-        cantidad: 1
+        cantidad: 6
       },
       {
         id: 4,
@@ -35,9 +29,7 @@ const products = [
         price: 399,
         image: '../public/images/img04.jpg',
         category: "urbana",
-        img1: "https://stockx-360.imgix.net/Nike-LD-Waffle-Sacai-White-Nylon/Images/Nike-LD-Waffle-Sacai-White-Nylon/Lv2/img",
-        img2: ".jpg?auto=format,compress&q=90&updated_at=1606325338&w=1000",
-        cantidad: 1
+        cantidad: 5
       },
       {
         id: 5,
@@ -45,9 +37,7 @@ const products = [
         price: 405,
         image: '../public/images/img05.jpg',
         category: "urbana",
-        img1: " https://stockx-360.imgix.net/Nike-Dunk-Low-SP-Kentucky/Images/Nike-Dunk-Low-SP-Kentucky/Lv2/img",
-        img2: ".jpg?auto=format,compress&q=90&updated_at=1606322330&w=1000",
-        cantidad: 1
+        cantidad: 12
       },
       {
         id: 6,
@@ -55,9 +45,7 @@ const products = [
         price: 285,
         image: '../public/images/img06.jpg',
         category: "urbana",
-        img1: "https://stockx-360.imgix.net/Nike-Dunk-Low-Off-White-University-Red/Images/Nike-Dunk-Low-Off-White-University-Red/Lv2/img",
-        img2: ".jpg?auto=format,compress&q=90&updated_at=1606321824&w=1000",
-        cantidad: 1
+        cantidad: 10
       },
       {
         id: 7,
@@ -65,9 +53,7 @@ const products = [
         price: 360,
         image: '../public/images/img07.jpg',
         category: "deportiva",
-        img1: "https://stockx-360.imgix.net/Nike-Air-Max-2-Light-Atmos/Images/Nike-Air-Max-2-Light-Atmos/Lv2/img",
-        img2: ".jpg?auto=format,compress&q=90&updated_at=1606320966&w=1000",
-        cantidad: 1
+        cantidad: 10
       },
       {
         id: 8,
@@ -75,9 +61,7 @@ const products = [
         price: 335,
         image: '../public/images/img08.jpg',
         category: "deportiva",
-        img1: "https://stockx-360.imgix.net/Nike-Air-Force-1-Low-Clot-Blue-Silk/Images/Nike-Air-Force-1-Low-Clot-Blue-Silk/Lv2/img",
-        img2: ".jpg?auto=format,compress&q=90&updated_at=1606325265&w=1000",
-        cantidad: 1
+        cantidad: 11
       },
       {
         id: 9,
@@ -85,9 +69,7 @@ const products = [
         price: 799,
         image: '../public/images/img09.jpg',
         category: "deportiva",
-        img1: "https://stockx-360.imgix.net/Nike-Air-Max-90-OG-White-Particle-Grey-Volt/Images/Nike-Air-Max-90-OG-White-Particle-Grey-Volt/Lv2/img",
-        img2: ".jpg?auto=format,compress&q=90&updated_at=1606323250&w=1000",
-        cantidad: 1
+        cantidad: 3
       },
       {
         id: 10,
@@ -95,9 +77,7 @@ const products = [
         price: 501,
         image: '../public/images/img10.jpg',
         category: "urbana",
-        img1: "https://stockx-360.imgix.net/Nike-Dunk-High-Black-Varsity-Maize/Images/Nike-Dunk-High-Black-Varsity-Maize/Lv2/img",
-        img2: ".jpg?auto=format,compress&q=90&updated_at=1609445259&w=1000",
-        cantidad: 1
+        cantidad: 4
       },
       {
         id: 11,
@@ -105,9 +85,7 @@ const products = [
         price: 377,
         image: '../public/images/img011.jpg',
         category: "deportiva",
-        img1: "https://stockx-360.imgix.net/Nike-Air-Rubber-Dunk-Off-White-UNC/Images/Nike-Air-Rubber-Dunk-Off-White-UNC/Lv2/img",
-        img2: ".jpg?auto=format,compress&q=90&updated_at=1609438911&w=1000",
-        cantidad: 1
+        cantidad: 5
       }
   ]
 
@@ -119,19 +97,31 @@ export const getProducts = () => {
   )
 }
 
+
 export const getProductById = (productId) => {
-  return new Promise((resolve)=>{
-    setTimeout( () => {
-      resolve(products.filter(prod => prod.id === productId))
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const producto = products.find((producto) => producto.id === parseInt(productId))
+      if (producto) {
+        resolve(producto)
+      } else {
+        reject('Producto no encontrado')
+      }
     }, 500)
   })
 }
 
 export const getProductsByCategory = (categoryId) => {
-  return new Promise((resolve)=>{
+  return new Promise((resolve, reject)=>{
     setTimeout( () => {
-      resolve(products.filter(prod => prod.category === categoryId))
+      const productsByCategory = products.filter( prod => prod.category === categoryId);
+      if (productsByCategory.length === 0) {
+        reject(new Error(`No se encontraron productos para la categoría ${categoryId}`));
+      } else {
+        resolve(productsByCategory);
+      }
     }, 500)
   })
 }
+
 
