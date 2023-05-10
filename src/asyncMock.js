@@ -1,3 +1,5 @@
+import { dameTodaLaData } from "./service/crud"
+
 const products = [
       {
         id: 1,

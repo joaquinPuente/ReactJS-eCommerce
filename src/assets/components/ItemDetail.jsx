@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import ItemCount from './ItemCount';
 import { Link } from 'react-router-dom';
+import { CartProvider } from '../dataProvider/CartProvider';
+
 
 const ItemDetail = ({ id, title, price, image, category, cantidad }) => {
   const [selectedQuantity, setSelectedQuantity] = useState(1);
 
   const handleAddToCart = () => {
-    // Aquí puedes hacer algo con el producto y la cantidad seleccionada
     console.log(`Agregando ${selectedQuantity} unidades de ${title} al carrito.`);
   };
 

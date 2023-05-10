@@ -8,13 +8,17 @@ import Footer from './assets/components/Footer';
 import ItemListContainer from './assets/components/ItemListContainer';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ItemDetailContainer } from './assets/components/ItemDetailContainer';
+import { CartProvider } from './assets/dataProvider/CartProvider';
+import { useState } from 'react';
 
 
 function App() {
-      
+  const [carritoItem, setCarrito] = useState("data del carrito")
+  
   return (
-    
+    <CartProvider.Provider value={carritoItem}>
     <div className="App">
+      
       <BrowserRouter>
       <NavBars/>
 
@@ -28,7 +32,7 @@ function App() {
       </BrowserRouter>
       
     </div>
-    
+    </CartProvider.Provider>
   )
 }
 
