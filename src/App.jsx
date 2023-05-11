@@ -10,13 +10,16 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ItemDetailContainer } from './assets/components/ItemDetailContainer';
 import { CartProvider } from './assets/dataProvider/CartProvider';
 import { useState } from 'react';
+import CartWidget from './assets/components/CartWidget';
 
 
 function App() {
-  const [carritoItem, setCarrito] = useState("data del carrito")
+  const [carritoItem, setCarrito] = useState([])
+
+
   
   return (
-    <CartProvider.Provider value={carritoItem}>
+    <CartProvider.Provider value={{carritoItem, setCarrito}}>
     <div className="App">
       
       <BrowserRouter>
@@ -27,7 +30,9 @@ function App() {
         <Route path='/productos' element={<ItemListContainer/>}/>
         <Route path='/categoria/:categoryId' element={<ItemListContainer/>}/>
         <Route path='/productos/:itemId' element={<ItemDetailContainer/>}/>
+        <Route path='/cart' element={<CartWidget/>}/>
       </Routes>
+
       <Footer/>
       </BrowserRouter>
       

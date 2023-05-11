@@ -16,7 +16,7 @@ const ItemListContainer = () => {
       asyncFunc
         .then(response => {
           setProducts(response);
-          console.log("response de set product es:", response);
+          //console.log("response de set product es:", response);
         })
         .catch(error => {
           console.error(error);

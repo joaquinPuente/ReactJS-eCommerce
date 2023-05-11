@@ -9,7 +9,7 @@ export const dameTodaLaData = async (donde) => {
   const result = await getDocs(queryRef);
 
   const dataAdapted = result.docs.map((doc) => fromDbToApp(doc));
-  return console.log(dataAdapted);
+  return dataAdapted;
 };
 
 export const fromDbToApp = (doc) => {
