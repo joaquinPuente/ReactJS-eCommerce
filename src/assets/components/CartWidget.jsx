@@ -72,8 +72,8 @@ const CartWidget = () => {
                 />
             ))}
             <h2>TOTAL: ${total}</h2>
-            <Button onClick={handleRemoveAllFromCart} className='me-1' variant="outline-danger">Eliminar carrito</Button>
-            <Button onClick={handleContinuarCompra} variant="outline-primary">Continuar compra</Button>
+            <Button onClick={handleRemoveAllFromCart} className='me-1' variant="outline-danger" size="lg">Eliminar carrito</Button>
+            <Button onClick={handleContinuarCompra} variant="outline-primary" size="lg">Continuar compra</Button>
         </div>
     )
 }
