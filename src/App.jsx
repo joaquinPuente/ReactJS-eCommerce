@@ -15,8 +15,6 @@ import CartWidget from './assets/components/CartWidget';
 
 function App() {
   const [carritoItem, setCarrito] = useState([])
-
-
   
   return (
     <CartProvider.Provider value={{carritoItem, setCarrito}}>

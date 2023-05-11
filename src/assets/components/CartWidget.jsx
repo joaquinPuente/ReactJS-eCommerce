@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import Button from 'react-bootstrap/Button';
 import { CartProvider } from '../dataProvider/CartProvider'
 import CartItem from './CartItem'
 
@@ -55,8 +56,8 @@ const CartWidget = () => {
                 />
             ))}
             <h2>TOTAL: ${total}</h2>
-            <button onClick={handleRemoveAllFromCart}>Eliminar carrito</button>
-            <button onClick={handleContinuarCompra}>Continuar compra</button>
+            <Button onClick={handleRemoveAllFromCart} className='me-1' variant="outline-danger">Eliminar carrito</Button>
+            <Button onClick={handleContinuarCompra} variant="outline-primary">Continuar compra</Button>
         </div>
     )
 }

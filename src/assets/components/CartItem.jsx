@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from 'react-bootstrap/Button';
 
 const CartItem = ({ id, image, title, cantidad, price, handleRemoveFromCart }) => {
   return (
@@ -7,7 +8,7 @@ const CartItem = ({ id, image, title, cantidad, price, handleRemoveFromCart }) =
       <h3>{title}</h3>
       <p>Cantidad: {cantidad}</p>
       <p>Precio: {price}</p>
-      <button onClick={() => handleRemoveFromCart(id)}>Eliminar</button>
+      <Button onClick={() => handleRemoveFromCart(id)} variant="outline-danger">Eliminar</Button>
     </div>
   );
 };
