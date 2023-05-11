@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import Button from 'react-bootstrap/Button';
 import { CartProvider } from '../dataProvider/CartProvider'
 import CartItem from './CartItem'
@@ -6,7 +6,23 @@ import CartItem from './CartItem'
 const CartWidget = () => {
     //CONSIGO POR CONTEXTO EL ARRAY DE DATOS DEL USECONTEXT
     const {carritoItem, setCarrito} = useContext(CartProvider)
-    const {id,title} = carritoItem
+
+    useEffect(() => {
+        localStorage.setItem('carrito', JSON.stringify(carritoItem));
+      }, [carritoItem]);
+
+    
+    useEffect(() => {
+        const carritoGuardado = localStorage.getItem('carrito');
+        if (carritoGuardado) {
+          setCarrito(JSON.parse(carritoGuardado));
+        } else {
+          setCarrito([]);
+        }
+    }, []);
+      
+      
+    
 
     //FUNCION PARA CONTINUAR COMPRA
     const handleContinuarCompra = () => {

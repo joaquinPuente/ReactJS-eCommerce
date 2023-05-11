@@ -14,8 +14,8 @@ import CartWidget from './assets/components/CartWidget';
 
 
 function App() {
-  const [carritoItem, setCarrito] = useState([])
-  
+  const [carritoItem, setCarrito] = useState(JSON.parse(localStorage.getItem('carrito')) || []);
+
   return (
     <CartProvider.Provider value={{carritoItem, setCarrito}}>
     <div className="App">
