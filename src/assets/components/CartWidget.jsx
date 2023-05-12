@@ -2,6 +2,8 @@ import React, { useContext, useEffect } from 'react'
 import Button from 'react-bootstrap/Button';
 import { CartProvider } from '../dataProvider/CartProvider'
 import CartItem from './CartItem'
+import nada from '../../../public/images/Aqui no hay nada.jpg'
+
 
 const CartWidget = () => {
     //CONSIGO POR CONTEXTO EL ARRAY DE DATOS DEL USECONTEXT
@@ -52,7 +54,7 @@ const CartWidget = () => {
     if (carritoItem.length === 0) {
         return (
             <div>
-                <h1>NO HAY NADA EN EL CARRITO</h1>
+                <img className="d-block mx-auto w-50" src={nada} alt="First slide"/>
             </div>
         )
     }

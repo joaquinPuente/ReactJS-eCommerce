@@ -16,7 +16,14 @@ export const ItemDetailContainer = () => {
       
   return (
   <div className='itemDetalle'>
-      <ItemDetail {...product} />
+      <ItemDetail
+        id={product.id} 
+        title={product.title}
+        price={product.price}
+        image={product.image}
+        category={product.category}
+        cantidad={product.cantidad}
+      />
   </div>
   )
 }

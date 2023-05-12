@@ -1,129 +1,58 @@
-import { dameTodaLaData } from "./service/crud"
+import { collection, getDocs, doc, getDoc } from "firebase/firestore";
+import { db } from "../src/service/config/firebaseConfig";
 
-const products = [
-      {
-        id: 1,
-        title: "Nike LD Waffle Sacai Black Nylon" ,
-        price: 401,
-        image: '../public/images/img01.jpg',
-        category: "urbana",
-        cantidad: 9,
-      },
-      {
-        id: 2,
-        title: "Nike Dunk Low Off-White Pine Green",
-        price: 304,
-        image: '../public/images/img02.jpg',
-        category: "urbana",
-        cantidad: 7
-      },
-      {
-        id: 3,
-        title: "Nike Air Force 1 Low Supreme Black",
-        price: 475,
-        image: '../public/images/img03.jpg',
-        category: "deportiva",
-        cantidad: 6
-      },
-      {
-        id: 4,
-        title: "Nike LD Waffle Sacai White Nylon",
-        price: 399,
-        image: '../public/images/img04.jpg',
-        category: "urbana",
-        cantidad: 5
-      },
-      {
-        id: 5,
-        title: "Nike Dunk Low SP Kentucky (2021)",
-        price: 405,
-        image: '../public/images/img05.jpg',
-        category: "urbana",
-        cantidad: 12
-      },
-      {
-        id: 6,
-        title: "Nike Dunk Low Off-White University",
-        price: 285,
-        image: '../public/images/img06.jpg',
-        category: "urbana",
-        cantidad: 10
-      },
-      {
-        id: 7,
-        title: "Nike Air Max 2 Light Atmos",
-        price: 360,
-        image: '../public/images/img07.jpg',
-        category: "deportiva",
-        cantidad: 10
-      },
-      {
-        id: 8,
-        title: "Nike Air Force 1 Low CLOT Blue Silk",
-        price: 335,
-        image: '../public/images/img08.jpg',
-        category: "deportiva",
-        cantidad: 11
-      },
-      {
-        id: 9,
-        title: "Nike Air Max 90 OG Volt (2020)",
-        price: 799,
-        image: '../public/images/img09.jpg',
-        category: "deportiva",
-        cantidad: 3
-      },
-      {
-        id: 10,
-        title: "Nike Dunk High Varsity Maize",
-        price: 501,
-        image: '../public/images/img10.jpg',
-        category: "urbana",
-        cantidad: 4
-      },
-      {
-        id: 11,
-        title: "Nike Air Rubber Dunk Off-White UNC",
-        price: 377,
-        image: '../public/images/img011.jpg',
-        category: "deportiva",
-        cantidad: 5
+export const getProducts = async () => {
+  try {
+    const productosCollection = collection(db, "productos");
+    const querySnapshot = await getDocs(productosCollection);
+
+    const productos = [];
+    querySnapshot.forEach((doc) => {
+      const product = doc.data();
+      productos.push(product);
+    });
+
+    return productos;
+  } catch (error) {
+    throw new Error("Error al obtener los productos: " + error.message);
+  }
+};
+
+export const getProductById = async (documentId) => {
+  try {
+    const productDoc = doc(db, "productos", documentId);
+    const docSnapshot = await getDoc(productDoc);
+
+    if (docSnapshot.exists()) {
+      const product = docSnapshot.data();
+      return product;
+    } else {
+      throw new Error("Producto no encontrado");
+    }
+  } catch (error) {
+    throw new Error("Error al obtener el producto: " + error.message);
+  }
+};
+
+export const getProductsByCategory = async (categoryId) => {
+  try {
+    const productsCollection = collection(db, "productos");
+    const querySnapshot = await getDocs(productsCollection);
+
+    const productsByCategory = [];
+    querySnapshot.forEach((doc) => {
+      const product = doc.data();
+      if (product.category === categoryId) {
+        productsByCategory.push(product);
       }
-  ]
+    });
 
-export const getProducts = () => {
-  return new Promise( (resolve) =>
-    setTimeout( () => {
-      resolve(products)
-    },500)  
-  )
-}
+    if (productsByCategory.length === 0) {
+      throw new Error(`No se encontraron productos para la categoría ${categoryId}`);
+    }
 
-
-export const getProductById = (productId) => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      const producto = products.find((producto) => producto.id === parseInt(productId))
-      if (producto) {
-        resolve(producto)
-      } else {
-        reject('Producto no encontrado')
-      }
-    }, 500)
-  })
-}
-
-export const getProductsByCategory = (categoryId) => {
-  return new Promise((resolve, reject)=>{
-    setTimeout( () => {
-      const productsByCategory = products.filter( prod => prod.category === categoryId);
-      if (productsByCategory.length === 0) {
-        reject(new Error(`No se encontraron productos para la categoría ${categoryId}`));
-      } else {
-        resolve(productsByCategory);
-      }
-    }, 500)
-  })
-}
-
-
+    return productsByCategory;
+  } catch (error) {
+    throw new Error("Error al obtener los productos por categoría: " + error.message);
+  }
+};
