@@ -1,6 +1,5 @@
 import React, { useState, useContext } from 'react';
 import Button from 'react-bootstrap/Button';
-import { Link } from 'react-router-dom';
 import agregarPedido from '../../service/crud'
 import { CartProvider } from '../dataProvider/CartProvider';
 
