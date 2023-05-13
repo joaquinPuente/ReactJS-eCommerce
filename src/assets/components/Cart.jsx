@@ -4,7 +4,7 @@ import Carrito from "../../assets/img/carrito.png"
 import { CartProvider } from '../dataProvider/CartProvider'
 
 const Cart = () => {
-  const { carritoItem, setItem} = useContext(CartProvider)
+  const { carritoItem } = useContext(CartProvider)
   let carrito = carritoItem.length
 
   return (

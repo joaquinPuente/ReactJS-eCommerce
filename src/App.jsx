@@ -11,6 +11,7 @@ import { ItemDetailContainer } from './assets/components/ItemDetailContainer';
 import { CartProvider } from './assets/dataProvider/CartProvider';
 import { useState } from 'react';
 import CartWidget from './assets/components/CartWidget';
+import Checkout from './assets/components/Checkout';
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
         <Route path='/categoria/:categoryId' element={<ItemListContainer/>}/>
         <Route path='/productos/:itemId' element={<ItemDetailContainer/>}/>
         <Route path='/cart' element={<CartWidget/>}/>
+        <Route path='/checkout' element={<Checkout/>}/>
       </Routes>
 
       <Footer/>

@@ -5,6 +5,7 @@ import Slide1 from '../../../public/images/slide2.jpg'
 import SlideNike from '../../../public/images/slideNike Dunk High Varsity Maize.jpg'
 import { Link } from 'react-router-dom'
 
+
 const Carrusel = () => {
   return (
     <div className='carruselContainer'>

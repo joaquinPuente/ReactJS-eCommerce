@@ -1,26 +1,11 @@
-import { async } from "@firebase/util";
-import { collection, query, getDocs } from "firebase/firestore";
+import { collection, addDoc } from "firebase/firestore";
 import { db } from "./config/firebaseConfig";
 
-
-export const dameTodaLaData = async (donde) => {
-  const collectionRef = collection(db, donde);
-  const queryRef = query(collectionRef);
-  const result = await getDocs(queryRef);
-
-  const dataAdapted = result.docs.map((doc) => fromDbToApp(doc));
-  return dataAdapted;
+const agregarPedido = async (que, donde) => {
+  console.log("agregar pedido", que, donde);
+  const collectionRef = collection(db,donde);
+  const response = await addDoc(collectionRef,que);
+  console.log("response", response.id);
 };
 
-export const fromDbToApp = (doc) => {
-  const id = doc.id;
-  const data = doc.data();
-
-  return {
-    Id: id,
-    Info: data,
-  };
-};
-
-dameTodaLaData("productos")
-
+export default agregarPedido;

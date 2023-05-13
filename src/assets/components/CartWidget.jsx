@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import { CartProvider } from '../dataProvider/CartProvider'
 import CartItem from './CartItem'
 import nada from '../../../public/images/Aqui no hay nada.jpg'
+import { Link } from 'react-router-dom';
 
 
 const CartWidget = () => {
@@ -22,14 +23,6 @@ const CartWidget = () => {
           setCarrito([]);
         }
     }, []);
-      
-      
-    
-
-    //FUNCION PARA CONTINUAR COMPRA
-    const handleContinuarCompra = () => {
-        alert("gracias por su compra")
-    }
 
     //FUNCION PARA BORRAR TODO
     const handleRemoveAllFromCart = () => {
@@ -75,7 +68,9 @@ const CartWidget = () => {
             ))}
             <h2>TOTAL: ${total}</h2>
             <Button onClick={handleRemoveAllFromCart} className='me-1' variant="outline-danger" size="lg">Eliminar carrito</Button>
-            <Button onClick={handleContinuarCompra} variant="outline-primary" size="lg">Continuar compra</Button>
+            <Link to="/checkout">
+            <Button variant="outline-primary" size="lg">Continuar compra</Button>
+            </Link>
         </div>
     )
 }
