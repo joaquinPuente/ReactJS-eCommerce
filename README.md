@@ -1,7 +1,7 @@
-#Projecto E-Commerce para CoderHouse 
+# Projecto E-Commerce para CoderHouse 
 
-#Objtivos:
+# Objtivos:
 
--1
--2
--3
+- 1
+- 2
+- 3
